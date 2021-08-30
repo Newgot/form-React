@@ -1,0 +1,39 @@
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000000b3;
+
+  &__container {
+    background: #FFF;
+    padding: 15px;
+  }
+
+  &__form {
+    display: block;
+
+    &-input {
+      display: block;
+      margin: 15px;
+      }
+
+    &-btn {
+      display: inline;
+      margin: 15px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: #0C77BB;
+      border-bottom: 1px dashed #0C77BB;
+      padding: 0px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+  }
+}

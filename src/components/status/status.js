@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-import './status.scss'
 import ModalForm from "../bloks/modal-form";
+import './status.scss'
 
-const Status = ({username, status, onChangeStatus}) => {
+const Status = ({ username, status, onChangeStatus }) => {
 
     const [visible, setVisible] = useState(false)
-    const showVisible = () => setVisible(true)
-    const changeStatus = (label) => {
+    const showVisible = () => setVisible(true) // change?
+    const changeStatus = label => {
         onChangeStatus(label)
         setVisible(false)
     }

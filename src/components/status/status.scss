@@ -1,4 +1,4 @@
-$font: Arial, sans-serif;
+@import '/src/libraly';
 $bg-status: #EAEAEA;
 
 
@@ -11,7 +11,7 @@ $bg-status: #EAEAEA;
   }
 
   &__title-text {
-    font-family: $font;
+    @include font;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
@@ -25,14 +25,7 @@ $bg-status: #EAEAEA;
   }
 
   &__change-btn {
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: #0C77BB;
-    border-bottom: 1px dashed #0C77BB;
-    padding: 0px;
-    font-size: 12px;
-    line-height: 12px;
+    @include link;
   }
 
   &__content {
@@ -55,7 +48,7 @@ $bg-status: #EAEAEA;
     }
 
     &--text {
-      font-family: $font;
+      @include font;
       margin: 0;
     }
   }

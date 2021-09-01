@@ -1,2 +1,2 @@
-import Status from "./status";
-export default Status
+import {Status} from "./status"
+export {Status}

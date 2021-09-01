@@ -1,3 +1,14 @@
 @mixin font {
+  font-family: Arial, sans-serif;
+}
 
+@mixin link {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #0C77BB;
+  border-bottom: 1px dashed #0C77BB;
+  padding: 0px;
+  font-size: 12px;
+  line-height: 12px;
 }

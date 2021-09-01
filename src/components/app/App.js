@@ -1,11 +1,12 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 
-import Status from "../status"
+import {Status} from "../status"
+import {DataForm} from "../data-form"
+import {sortCities} from './utils'
 import data from '../../data/cities.json'
-import { sortCities } from './utils'
 import './app.scss'
 
-const App = () => {
+export const App = () => {
     const cities = sortCities(data)
     const username = 'Человек №3596941'
 
@@ -16,10 +17,10 @@ const App = () => {
             <Status
                 username={username}
                 status={status}
-                onChangeStatus={(label) => setStatus(label)}
+                setStatus={setStatus}
             />
+            <DataForm
+                cities={cities}/>
         </div>
     )
 }
-
-export default App;

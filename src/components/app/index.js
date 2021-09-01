@@ -1,3 +1,2 @@
-import App from "./App";
-export default App;
-// EOF
+import {App} from "./App"
+export {App}

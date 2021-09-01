@@ -1,36 +1,33 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react'
 
 import './modal-form.scss'
 
-const ModalForm = ({ text, visible, onChange }) => {
-
-    const [label, setLabel] = useState('')
-    // юз стейт
-    // useRef попробуй без useState
-
+export const ModalForm = ({text, visible, onChange}) => {
+    const statusRef = useRef()
     if (!visible) {
         return null;
     }
 
-    const onClick = (e) => {
-        // e.preventDefault()
-        return onChange(label)
+    const onSubmit = (e) => {
+        e.preventDefault()
+        return onChange(statusRef.current.value)
     }
 
     return (
         <div className='modal'>
             <div className='modal__container'>
-                <form action='' className='modal__form' onSubmit={console.log}>
+                <form
+                    className='modal__form'
+                    onSubmit={onSubmit}
+                >
                     <input
+                        ref={statusRef}
                         className='modal__form-input'
-                        value={label}
-                        onChange={(e) => setLabel(e.target.value)}
                         name='status'
-                        type='text' 
+                        type='text'
                     />
                     <button
                         className='modal__form-btn'
-                        onClick={onClick}
                         type='submit'
                     >
                         {text}
@@ -39,8 +36,4 @@ const ModalForm = ({ text, visible, onChange }) => {
             </div>
         </div>
     )
-
-
 }
-
-export default ModalForm

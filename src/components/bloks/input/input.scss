@@ -1,0 +1,28 @@
+@mixin input {
+  font-size: 16px;
+  padding: 6px 12px;
+  width: 335px;
+}
+
+.input {
+  position: relative;
+
+  &__field {
+    @include input;
+
+    &--error {
+      @include input;
+      border: 1px solid #FF0000;
+    }
+  }
+
+  &__error-message {
+    position: absolute;
+    left: 0;
+    top: 25px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #FF0000;
+  }
+
+}

@@ -1,5 +1,6 @@
-@mixin font {
+*{
   font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 @mixin link {

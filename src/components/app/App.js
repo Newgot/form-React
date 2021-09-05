@@ -1,25 +1,47 @@
-import React, { useState } from "react"
+import React, {useState, useMemo} from "react"
 
-import Status from "../status"
-import data from '../../data/cities.json'
-import { sortCities } from './utils'
-import './app.scss'
+import {Status} from "../status"
+import {DataForm} from "../data-form"
+import {sortCities} from "./utils"
+import cityJSON from "../../data/cities.json"
+import "./app.scss"
 
-const App = () => {
-    const cities = sortCities(data)
-    const username = 'Человек №3596941'
+export const App = () => {
+    const cities = useMemo(() => {return sortCities(cityJSON)}, []);
 
-    const [status, setStatus] = useState('Прежде чем действовать, надо понять')
+    const username = "Человек №3596941"
 
+    const [status, setStatus] = useState("Прежде чем действовать, надо понять")
+    const [errors, setErrors] = useState([0, 0, 0])
+    const [form, setForm] = useState({
+        username,
+        status,
+        city: Array.isArray(cities) && cities[0]?.city,
+        password: "",
+        password_double : "",
+        email: "",
+        subscribe: false,
+    })
+    console.log(form)
+    const onSubmit = () => {
+        // let error = errors.map(erItem => error += erItem)
+        console.log(form)
+        console.log(errors)
+    }
     return (
-        <div className='app'>
+        <div className="app">
             <Status
                 username={username}
                 status={status}
-                onChangeStatus={(label) => setStatus(label)}
+                setStatus={setStatus}
+            />
+            <DataForm
+                cities={cities}
+                setError={setErrors}
+                form={form}
+                setForm={setForm}
+                onSubmit={onSubmit}
             />
         </div>
     )
 }
-
-export default App;

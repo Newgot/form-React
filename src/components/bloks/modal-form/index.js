@@ -1,2 +1,1 @@
-import ModalForm from "./modal-form";
-export default ModalForm
+export * from "./modal-form"

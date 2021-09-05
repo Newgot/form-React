@@ -4,6 +4,7 @@ import {Select} from "../bloks/select"
 import {Item} from "../bloks/item"
 import string from "./string.json"
 import "./data-form.scss"
+import { useValidation } from "./useValidation"
 
 export const DataForm = ({cities, form, setForm}) => {
 
@@ -11,13 +12,20 @@ export const DataForm = ({cities, form, setForm}) => {
         setForm({})
     }
 
-    const inputHandler = ({target : {name, value}}) => setForm(prev => ({...prev, [name]: value}))
+    const { validation, setValidation } = useValidation();
+    console.log(validation);
+
+    const inputHandler = ({target : {name, value}}) => {
+        setValidation(name, value)
+        setForm(prev => ({...prev, [name]: value}))
+    }
 
     return (
         <form className="data-form"
               onSubmit={onSubmitFrom}>
             <Item
                 label={string.your_city}
+
             >
                 <Select
                     name="city"
@@ -29,6 +37,7 @@ export const DataForm = ({cities, form, setForm}) => {
             <Item
                 label={string.password}
                 description={string.password_desc}
+                errorText={validation.password}
             >
                 <input
                     name="password"

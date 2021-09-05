@@ -1,2 +1,2 @@
-import {Status} from "./status"
-export {Status}
+export * from "./status"
+

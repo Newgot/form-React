@@ -21,7 +21,7 @@ export const validateInput = (
             erMessage: `Используйте не более ${max} символов`
         }
     } else if (email) {
-        const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+        const reg = /^([A-Za-z0-9_])+([A-Za-z0-9_])+\.([A-Za-z]{2,4})$/
         if (!reg.test(text)) {
             return {
                 erMessage: `Неверный E-mail`

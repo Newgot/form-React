@@ -1,2 +1,2 @@
-import {DataForm} from "./data-form"
-export {DataForm}
+export * from "./data-form"
+

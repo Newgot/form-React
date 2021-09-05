@@ -1,43 +1,57 @@
 import React from "react"
 
 import {Select} from "../bloks/select"
-import {Input} from "../bloks/input/"
-import {Row} from "../bloks/row"
+import {Item} from "../bloks/item"
+import string from "./string.json"
 import "./data-form.scss"
 
-export const DataForm = ({cities}) => {
-    return (
-        <div className="data-form">
-            <Row
-                className="data-form__row"
-                label="Ваш город"
-                input={<Select cities={cities}/>}
+export const DataForm = ({cities, form, setForm}) => {
 
-            />
-            <Row
-                className="data-form__row"
-                label="Пароль"
-                input={
-                    <Input
-                        rules={{min: 5, require: true, requireName: "пароль"}}/>
-                }
-                description="Ваш новый пароль должен содержать не менее 5 символов."
-            />
-            <Row
-                className="data-form__row"
-                label="Пароль еще раз"
-                input={
-                    <Input
-                        rules={{min: 5, require: true, requireName: "пароль"}}/>
-                }
-                description="Повторите пароль, пожалуйста, это обезопасит вас с нами на случай ошибки."
-            />
+    const onSubmitFrom = () => {
+        setForm({})
+    }
+
+    const inputHandler = ({target : {name, value}}) => setForm(prev => ({...prev, [name]: value}))
+
+    return (
+        <form className="data-form"
+              onSubmit={onSubmitFrom}>
+            <Item
+                label={string.your_city}
+            >
+                <Select
+                    name="city"
+                    value={form.city}
+                    options={cities}
+                    onChange={inputHandler}
+                />
+            </Item>
+            <Item
+                label={string.password}
+                description={string.password_desc}
+            >
+                <input
+                    name="password"
+                    value={form.password}
+                    onChange={inputHandler}
+                />
+            </Item>
+            <Item
+                label={string.password_again}
+                description={string.password_again_desc}
+            >
+                <input
+                    name="password_double"
+                    value={form.password_double}
+                    onChange={inputHandler}
+                />
+            </Item>
             <button
                 className="data-form__btn"
                 type="submit"
-                >
-                Изменить
+            >
+                {string.change}
             </button>
-        </div>
+        </form>
     )
 }

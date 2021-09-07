@@ -21,10 +21,9 @@ export const App = () => {
         password_double : "",
         email: "",
         subscribe: false,
+        time: null
     })
-    console.log(form)
     const onSubmit = () => {
-        // let error = errors.map(erItem => error += erItem)
         console.log(form)
         console.log(errors)
     }

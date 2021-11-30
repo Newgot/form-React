@@ -7,25 +7,25 @@ import cityJSON from "../../data/cities.json"
 import "./app.scss"
 
 export const App = () => {
-    const cities = useMemo(() => {return sortCities(cityJSON)}, []);
+    const cities = useMemo(() => {
+        return sortCities(cityJSON)
+    }, []);
 
     const username = "Человек №3596941"
 
     const [status, setStatus] = useState("Прежде чем действовать, надо понять")
-    const [errors, setErrors] = useState([0, 0, 0])
     const [form, setForm] = useState({
         username,
         status,
         city: Array.isArray(cities) && cities[0]?.city,
         password: "",
-        password_double : "",
+        password_double: "",
         email: "",
         subscribe: false,
         time: null
     })
     const onSubmit = () => {
         console.log(form)
-        console.log(errors)
     }
     return (
         <div className="app">
@@ -36,7 +36,6 @@ export const App = () => {
             />
             <DataForm
                 cities={cities}
-                setError={setErrors}
                 form={form}
                 setForm={setForm}
                 onSubmit={onSubmit}

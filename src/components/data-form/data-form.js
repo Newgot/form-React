@@ -6,15 +6,27 @@ import {useValidation} from "./useValidation"
 import string from "./string.json"
 import "./data-form.scss"
 
-export const DataForm = ({cities, form, setForm}) => {
+export const DataForm = ({cities, form, setForm, onSubmit}) => {
 
-    const onSubmitFrom = () => {
-        setForm({})
+    const onSubmitFrom = (e) => {
+        e.preventDefault()
+        let validationFlag = true
+        const validationArr = Object.values(validation)
+        validationArr.forEach(valid => {
+            if (valid) {
+                validationFlag = false
+            }
+        })
+        if (validationFlag) {
+            const time = Date.now()
+            setForm(prev => ({...prev, time}))
+            onSubmit()
+        }
     }
-    console.log(form)
+
     const {validation, setValidation} = useValidation();
 
-    const inputHandler = ({target: {name, value}}, text, password_first = null) => {
+    const inputHandler = ({target: {name, value}}, text, password_first) => {
         setValidation(name, value, text, password_first)
         setForm(prev => ({...prev, [name]: value}))
     }
@@ -54,7 +66,7 @@ export const DataForm = ({cities, form, setForm}) => {
                     type="password"
                     name="password_double"
                     value={form.password_double}
-                    onChange={e =>inputHandler(e, 'пароль', form.password)}
+                    onChange={e => inputHandler(e, 'пароль', form.password)}
                 />
             </Item>
             <Item
@@ -65,20 +77,22 @@ export const DataForm = ({cities, form, setForm}) => {
                 <input
                     name="email"
                     value={form.email}
-                    onChange={e =>inputHandler(e, 'E-mail')}
+                    onChange={e => inputHandler(e, 'E-mail')}
                 />
             </Item>
             <Item
                 label={string.i_agree}
             >
-                <input
-                    className="data-form__checkbox"
-                    type="checkbox"
-                    name="email"
-                    value={form.email}
-                    onChange={e =>setForm(prev => ({...prev, subscribe: e.target.checked}))}
-                />
-                <p>{string.subscribe}</p>
+                <div className="data-form__container">
+                    <input
+                        className="data-form__checkbox"
+                        type="checkbox"
+                        name="email"
+                        value={form.email}
+                        onChange={e => setForm(prev => ({...prev, subscribe: e.target.checked}))}
+                    />
+                    <p>{string.subscribe}</p>
+                </div>
             </Item>
             <button
                 className="data-form__btn"

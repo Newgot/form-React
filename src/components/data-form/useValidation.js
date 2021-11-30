@@ -6,7 +6,7 @@ export const useValidation = () => {
         password_double: null,
         email: null,
     })
-    const setValidation = (name, value, text, password_first) => {
+    const setValidation = (name, value, text, password_first = null) => {
         switch (name) {
             case 'password': {
                 if (!value.length) {

@@ -1,4 +1,5 @@
 @import '/src/libraly';
+
 $bg-status: #EAEAEA;
 
 
@@ -33,7 +34,7 @@ $bg-status: #EAEAEA;
     margin-top: 11px;
     background: $bg-status;
     padding: 12px;
-    width: 100%;
+    width: 335px;
 
     &::before {
       content: '';
@@ -48,6 +49,27 @@ $bg-status: #EAEAEA;
 
     &--text {
       margin: 0;
+    }
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .status {
+    &__row {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .status {
+    &__content {
+      margin: 10px 0;
+
+      &::before {
+        display: none;
+      }
     }
   }
 }

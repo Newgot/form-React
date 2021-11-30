@@ -1,6 +1,13 @@
-.data-form {
+input.data-form, .data-form {
+  font-size: 19px;
+
   &__hr {
     border: 1px solid #E5E4E4;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
   }
 
   &__label {
@@ -26,5 +33,10 @@
     line-height: 20px;
     width: 120px;
     border: none;
+  }
+
+  &__checkbox {
+    width: auto;
+    margin-right: 10px;
   }
 }
